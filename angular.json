@@ -3,15 +3,9 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "filipa": {
+    "00604": {
       "projectType": "application",
-      "schematics": {
-
-        "@schematics/angular:component": {
-          "skipTests": true
-        },
-        "@schematics/angular:service": {
-      },
+      "schematics": {},
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -62,10 +56,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "filipa:build:production"
+              "buildTarget": "00604:build:production"
             },
             "development": {
-              "buildTarget": "filipa:build:development"
+              "buildTarget": "00604:build:development"
             }
           },
           "defaultConfiguration": "development"
