@@ -1,0 +1,245 @@
+:host {
+  display: block;
+  width: 100%;
+  font-family: var(--main-font-family, Roboto, "Helvetica Neue", sans-serif);
+}
+
+/* Fundo geral da página de auth */
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 1rem;
+  background-color: var(--background-color);
+}
+
+/* Wrapper que centraliza side + card */
+.auth-wrapper {
+  max-width: 1100px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 5fr);
+  gap: 1.5rem;
+}
+
+/* Lado esquerdo */
+.auth-side {
+  display: flex;
+  align-items: stretch;
+}
+
+.auth-side-content {
+  width: 100%;
+  border-radius: var(--border-radius);
+  padding: 1.5rem 1.6rem;
+  background-image: var(--primary-doc-color);
+  background-size: var(--animation-background-size);
+  animation: var(--animation-move-gradient);
+  color: var(--text-color-light);
+  box-shadow: var(--shadow);
+}
+
+.auth-title {
+  font-size: 1.7rem;
+  margin-bottom: 0.5rem;
+}
+
+.auth-subtitle {
+  font-size: 0.95rem;
+  line-height: var(--main-line-height);
+  margin-bottom: 0.9rem;
+}
+
+.auth-highlights {
+  list-style: disc;
+  padding-left: 1.1rem;
+  font-size: 0.92rem;
+}
+
+.auth-highlights li + li {
+  margin-top: 0.3rem;
+}
+
+/* Card de autenticação (lado direito) */
+.auth-card {
+  border-radius: var(--border-radius);
+  background-color: var(--background-color-sections);
+  box-shadow: var(--shadow);
+  padding: 1.4rem 1.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+/* Tabs */
+.auth-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  background-color: var(--background-color);
+  padding: 0.2rem;
+  border-radius: 999px;
+}
+
+.auth-tab {
+  flex: 1;
+  border-radius: 999px;
+  border: none;
+  background-color: transparent;
+  padding: 0.45rem 0.75rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  color: var(--text-color);
+  transition: var(--transition);
+}
+
+.auth-tab-active {
+  background-color: var(--primary-color);
+  color: var(--text-color-light);
+  box-shadow: var(--shadow);
+}
+
+/* Formulário */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.auth-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.auth-field label {
+  font-size: 0.85rem;
+  color: var(--text-color);
+}
+
+.auth-field input {
+  border-radius: var(--border-radius);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  padding: 0.55rem 0.7rem;
+  font-size: 0.9rem;
+  outline: none;
+  background-color: #fff;
+}
+
+.auth-field input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 1px var(--primary-color);
+}
+
+/* Linha de lembrete + forgot password */
+.auth-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.auth-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  color: var(--text-color);
+}
+
+.auth-checkbox input {
+  width: 14px;
+  height: 14px;
+}
+
+.auth-link {
+  border: none;
+  background: none;
+  padding: 0;
+  font-size: 0.85rem;
+  color: var(--text-hover);
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* Botão submit */
+.auth-submit {
+  margin-top: 0.4rem;
+  border-radius: var(--border-radius);
+  border: none;
+  padding: 0.6rem 1.1rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+  background-color: var(--primary-color);
+  color: var(--text-color-light);
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+.auth-submit:hover:enabled {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-1px);
+}
+
+.auth-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Troca entre login / registo */
+.auth-switch {
+  margin-top: 0.6rem;
+  font-size: 0.85rem;
+  color: var(--text-color);
+}
+
+.auth-switch button {
+  border: none;
+  background: none;
+  color: var(--text-hover);
+  cursor: pointer;
+  padding: 0;
+  margin-left: 0.2rem;
+  text-decoration: underline;
+}
+
+/* ---------- Responsivo ---------- */
+
+@media (max-width: 900px) {
+  .auth-wrapper {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .auth-page {
+    padding: 1rem 0.75rem;
+  }
+
+  .auth-side-content {
+    padding: 1.2rem 1.3rem;
+  }
+
+  .auth-card {
+    padding: 1.2rem 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-page {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .auth-title {
+    font-size: 1.4rem;
+  }
+
+  .auth-wrapper {
+    gap: 1rem;
+  }
+
+  .auth-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

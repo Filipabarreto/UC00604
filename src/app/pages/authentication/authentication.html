@@ -1,1 +1,166 @@
-<p>authentication works!</p>
+<section class="auth-page">
+  <div class="auth-wrapper">
+    <!-- Lado esquerdo (texto de boas-vindas / mensagem) -->
+    <aside class="auth-side">
+      <div class="auth-side-content">
+        <h1 class="auth-title">
+          Bem-vindo(a) à UC00604
+        </h1>
+        <p class="auth-subtitle">
+          Acede à tua conta para acompanhar conteúdos, atividades e progresso
+          da unidade de <strong>Programação Web Frontend</strong>.
+        </p>
+
+        <ul class="auth-highlights">
+          <li>Desenvolve páginas web modernas com HTML, CSS e JavaScript.</li>
+          <li>Trabalha com interfaces responsivas e acessíveis.</li>
+          <li>Prepara-te para o mercado na área de desenvolvimento web.</li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- Lado direito (formulário) -->
+    <div class="auth-card">
+      <!-- Tabs Login / Registo -->
+      <div class="auth-tabs">
+        <button
+          type="button"
+          class="auth-tab"
+          [class.auth-tab-active]="mode === 'login'"
+          (click)="mode = 'login'"
+        >
+          Entrar
+        </button>
+        <button
+          type="button"
+          class="auth-tab"
+          [class.auth-tab-active]="mode === 'register'"
+          (click)="mode = 'register'"
+        >
+          Criar conta
+        </button>
+      </div>
+
+      <!-- LOGIN -->
+      <form
+        *ngIf="mode === 'login'"
+        class="auth-form"
+        [formGroup]="loginForm"
+        (ngSubmit)="onLogin()"
+      >
+        <div class="auth-field">
+          <label for="loginEmail">Email</label>
+          <input
+            id="loginEmail"
+            type="email"
+            formControlName="email"
+            placeholder="o.teu.email@exemplo.com"
+          />
+        </div>
+
+        <div class="auth-field">
+          <label for="loginPassword">Password</label>
+          <input
+            id="loginPassword"
+            type="password"
+            formControlName="password"
+            placeholder="••••••••"
+          />
+        </div>
+
+        <div class="auth-row">
+          <label class="auth-checkbox">
+            <input type="checkbox" formControlName="rememberMe" />
+            <span>Manter sessão iniciada</span>
+          </label>
+
+          <button
+            type="button"
+            class="auth-link"
+            (click)="onForgotPassword()"
+          >
+            Esqueceste-te da password?
+          </button>
+        </div>
+
+        <button
+          class="auth-submit"
+          type="submit"
+          [disabled]="loginForm.invalid"
+        >
+          Entrar
+        </button>
+
+        <p class="auth-switch">
+          Ainda não tens conta?
+          <button type="button" (click)="mode = 'register'">
+            Criar conta
+          </button>
+        </p>
+      </form>
+
+      <!-- REGISTO -->
+      <form
+        *ngIf="mode === 'register'"
+        class="auth-form"
+        [formGroup]="registerForm"
+        (ngSubmit)="onRegister()"
+      >
+        <div class="auth-field">
+          <label for="regName">Nome</label>
+          <input
+            id="regName"
+            type="text"
+            formControlName="name"
+            placeholder="O teu nome completo"
+          />
+        </div>
+
+        <div class="auth-field">
+          <label for="regEmail">Email</label>
+          <input
+            id="regEmail"
+            type="email"
+            formControlName="email"
+            placeholder="o.teu.email@exemplo.com"
+          />
+        </div>
+
+        <div class="auth-field">
+          <label for="regPassword">Password</label>
+          <input
+            id="regPassword"
+            type="password"
+            formControlName="password"
+            placeholder="Cria uma password segura"
+          />
+        </div>
+
+        <div class="auth-field">
+          <label for="regConfirmPassword">Confirmar password</label>
+          <input
+            id="regConfirmPassword"
+            type="password"
+            formControlName="confirmPassword"
+            placeholder="Repete a password"
+          />
+        </div>
+
+        <button
+          class="auth-submit"
+          type="submit"
+          [disabled]="registerForm.invalid"
+        >
+          Criar conta
+        </button>
+
+        <p class="auth-switch">
+          Já tens conta?
+          <button type="button" (click)="mode = 'login'">
+            Entrar
+          </button>
+        </p>
+      </form>
+    </div>
+  </div>
+</section>
