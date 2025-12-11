@@ -5,7 +5,7 @@ export const routes: Routes = [
   /**nossa primeira rota */
   {path:'', redirectTo:'welcome', pathMatch:'full'},
   {path:'welcome', loadComponent:() => import('./pages/welcome/welcome').then(c => c.Welcome)},
-  {path:"pages/authentication", loadComponent:() => import('./pages/Authentication/authentication').then(c => c.Authentication)},
+  {path:"pages/Authentication", loadComponent:() => import('./pages/Authentication/authentication').then(c => c.Authentication)},
   /**rota padrao sem lazyload */
   {path:"pages/uc00604", component:Uc00604},
 
