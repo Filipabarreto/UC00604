@@ -1,27 +1,25 @@
 <section class="auth-page">
   <div class="auth-wrapper">
-    <!-- Lado esquerdo (texto de boas-vindas / mensagem) -->
+    <!-- Lado esquerdo -->
     <aside class="auth-side">
       <div class="auth-side-content">
-        <h1 class="auth-title">
-          Bem-vindo(a) à UC00604
-        </h1>
+        <h1 class="auth-title">Acesso à plataforma</h1>
         <p class="auth-subtitle">
-          Acede à tua conta para acompanhar conteúdos, atividades e progresso
-          da unidade de <strong>Programação Web Frontend</strong>.
+          Entra para acompanhar conteúdos, atividades e progresso da unidade
+          <strong>UC00604</strong>.
         </p>
 
         <ul class="auth-highlights">
-          <li>Desenvolve páginas web modernas com HTML, CSS e JavaScript.</li>
-          <li>Trabalha com interfaces responsivas e acessíveis.</li>
-          <li>Prepara-te para o mercado na área de desenvolvimento web.</li>
+          <li>Interface simples e rápida.</li>
+          <li>Conteúdos e recursos sempre disponíveis.</li>
+          <li>Progresso organizado por etapas.</li>
         </ul>
       </div>
     </aside>
 
-    <!-- Lado direito (formulário) -->
+    <!-- Card -->
     <div class="auth-card">
-      <!-- Tabs Login / Registo -->
+      <!-- Tabs -->
       <div class="auth-tabs">
         <button
           type="button"
@@ -31,6 +29,7 @@
         >
           Entrar
         </button>
+
         <button
           type="button"
           class="auth-tab"
@@ -55,6 +54,7 @@
             type="email"
             formControlName="email"
             placeholder="o.teu.email@exemplo.com"
+            autocomplete="email"
           />
         </div>
 
@@ -65,37 +65,28 @@
             type="password"
             formControlName="password"
             placeholder="••••••••"
+            autocomplete="current-password"
           />
         </div>
 
         <div class="auth-row">
           <label class="auth-checkbox">
             <input type="checkbox" formControlName="rememberMe" />
-            <span>Manter sessão iniciada</span>
+            <span>Manter sessão</span>
           </label>
 
-          <button
-            type="button"
-            class="auth-link"
-            (click)="onForgotPassword()"
-          >
-            Esqueceste-te da password?
+          <button type="button" class="auth-link" (click)="onForgotPassword()">
+            Recuperar password
           </button>
         </div>
 
-        <button
-          class="auth-submit"
-          type="submit"
-          [disabled]="loginForm.invalid"
-        >
+        <button class="auth-submit" type="submit" [disabled]="loginForm.invalid">
           Entrar
         </button>
 
         <p class="auth-switch">
           Ainda não tens conta?
-          <button type="button" (click)="mode = 'register'">
-            Criar conta
-          </button>
+          <button type="button" (click)="mode = 'register'">Criar conta</button>
         </p>
       </form>
 
@@ -113,6 +104,7 @@
             type="text"
             formControlName="name"
             placeholder="O teu nome completo"
+            autocomplete="name"
           />
         </div>
 
@@ -123,6 +115,7 @@
             type="email"
             formControlName="email"
             placeholder="o.teu.email@exemplo.com"
+            autocomplete="email"
           />
         </div>
 
@@ -133,6 +126,7 @@
             type="password"
             formControlName="password"
             placeholder="Cria uma password segura"
+            autocomplete="new-password"
           />
         </div>
 
@@ -143,6 +137,7 @@
             type="password"
             formControlName="confirmPassword"
             placeholder="Repete a password"
+            autocomplete="new-password"
           />
         </div>
 
@@ -156,9 +151,7 @@
 
         <p class="auth-switch">
           Já tens conta?
-          <button type="button" (click)="mode = 'login'">
-            Entrar
-          </button>
+          <button type="button" (click)="mode = 'login'">Entrar</button>
         </p>
       </form>
     </div>

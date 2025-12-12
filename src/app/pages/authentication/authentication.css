@@ -4,64 +4,58 @@
   font-family: var(--main-font-family, Roboto, "Helvetica Neue", sans-serif);
 }
 
-/* Fundo geral da página de auth */
 .auth-page {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 1.5rem 1rem;
- 
+  background-color: var(--background-color);
 }
 
-/* Wrapper que centraliza side + card */
 .auth-wrapper {
   max-width: 1100px;
   width: 100%;
   display: grid;
   grid-template-columns: minmax(0, 5fr) minmax(0, 5fr);
-  gap: 1.5rem;
+  gap: 1.25rem;
 }
 
-/* Lado esquerdo */
-.auth-side {
-  display: flex;
-  align-items: stretch;
-}
-
+/* Lado esquerdo (mais neutro) */
 .auth-side-content {
   width: 100%;
   border-radius: var(--border-radius);
   padding: 1.5rem 1.6rem;
-  background-image: var(--primary-doc-color);
-  background-size: var(--animation-background-size);
-  animation: var(--animation-move-gradient);
-  color: var(--text-color-light);
+  background-color: var(--background-color-sections);
   box-shadow: var(--shadow);
+  border-left: 6px solid var(--primary-color);
 }
 
 .auth-title {
-  font-size: 1.7rem;
+  font-size: 1.6rem;
   margin-bottom: 0.5rem;
+  color: var(--text-color);
 }
 
 .auth-subtitle {
   font-size: 0.95rem;
   line-height: var(--main-line-height);
   margin-bottom: 0.9rem;
+  color: var(--text-color);
 }
 
 .auth-highlights {
   list-style: disc;
   padding-left: 1.1rem;
   font-size: 0.92rem;
+  color: var(--text-color);
 }
 
 .auth-highlights li + li {
   margin-top: 0.3rem;
 }
 
-/* Card de autenticação (lado direito) */
+/* Card formulário */
 .auth-card {
   border-radius: var(--border-radius);
   background-color: var(--background-color-sections);
@@ -98,7 +92,7 @@
   box-shadow: var(--shadow);
 }
 
-/* Formulário */
+/* Form */
 .auth-form {
   display: flex;
   flex-direction: column;
@@ -130,7 +124,7 @@
   box-shadow: 0 0 0 1px var(--primary-color);
 }
 
-/* Linha de lembrete + forgot password */
+/* row */
 .auth-row {
   display: flex;
   justify-content: space-between;
@@ -147,11 +141,6 @@
   color: var(--text-color);
 }
 
-.auth-checkbox input {
-  width: 14px;
-  height: 14px;
-}
-
 .auth-link {
   border: none;
   background: none;
@@ -162,7 +151,7 @@
   text-decoration: underline;
 }
 
-/* Botão submit */
+/* submit */
 .auth-submit {
   margin-top: 0.4rem;
   border-radius: var(--border-radius);
@@ -186,7 +175,6 @@
   cursor: not-allowed;
 }
 
-/* Troca entre login / registo */
 .auth-switch {
   margin-top: 0.6rem;
   font-size: 0.85rem;
@@ -203,41 +191,14 @@
   text-decoration: underline;
 }
 
-/* ---------- Responsivo ---------- */
-
+/* Responsivo */
 @media (max-width: 900px) {
   .auth-wrapper {
     grid-template-columns: 1fr;
   }
 }
 
-@media (max-width: 768px) {
-  .auth-page {
-    padding: 1rem 0.75rem;
-  }
-
-  .auth-side-content {
-    padding: 1.2rem 1.3rem;
-  }
-
-  .auth-card {
-    padding: 1.2rem 1.3rem;
-  }
-}
-
 @media (max-width: 480px) {
-  .auth-page {
-    padding: 0.75rem 0.5rem;
-  }
-
-  .auth-title {
-    font-size: 1.4rem;
-  }
-
-  .auth-wrapper {
-    gap: 1rem;
-  }
-
   .auth-row {
     flex-direction: column;
     align-items: flex-start;
