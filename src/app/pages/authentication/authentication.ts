@@ -1,73 +1,53 @@
-import { Component } from '@angular/core';
-import {
-  FormBuilder,
-  FormGroup,
-  Validators,
-  ReactiveFormsModule,
-  AbstractControl,
-  ValidationErrors,
-} from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-authentication',
-  standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
-  templateUrl: './authentication.html',     // 👈 TEM de existir na mesma pasta
-  styleUrl: './authentication.css',         // 👈 TEM de existir na mesma pasta
+  imports: [ReactiveFormsModule, CommonModule],
+  templateUrl: './authentication.html',
+  styleUrl: './authentication.css',
 })
 export class Authentication {
-  mode: 'login' | 'register' = 'login';
 
-  loginForm: FormGroup;
-  registerForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
-    this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required]],
-      rememberMe: [false],
+
+  protected signinforms!: UntypedFormGroup;
+
+
+  //  protected signinformsExemplo!: UntypedFormGroup;
+
+
+  constructor(private fb: UntypedFormBuilder) {
+    this.signinforms = this.fb.nonNullable.group({
+      email: [''],
+      password: ['']
     });
-
-    this.registerForm = this.fb.group(
-      {
-        name: ['', [Validators.required, Validators.minLength(3)]],
-        email: ['', [Validators.required, Validators.email]],
-        password: ['', [Validators.required, Validators.minLength(6)]],
-        confirmPassword: ['', [Validators.required]],
-      },
-      {
-        validators: [this.passwordsMatchValidator],
-      }
-    );
   }
 
-  private passwordsMatchValidator(
-    group: AbstractControl
-  ): ValidationErrors | null {
-    const password = group.get('password')?.value;
-    const confirmPassword = group.get('confirmPassword')?.value;
-    if (!password || !confirmPassword) return null;
-    return password === confirmPassword ? null : { passwordsMismatch: true };
-  }
-
-  onLogin(): void {
-    if (this.loginForm.invalid) {
-      this.loginForm.markAllAsTouched();
-      return;
+    onsubmit() {
+      console.log("Meu Forms", this.signinforms.value);
     }
-    console.log('LOGIN', this.loginForm.value);
-  }
 
-  onRegister(): void {
-    if (this.registerForm.invalid) {
-      this.registerForm.markAllAsTouched();
-      return;
+
+    /**Exemplo Didático */
+    // this.signinformsExemplo = this.fb.nonNullable.group({
+    //   email: ['Paula'],
+    //   password: ['Vasco']
+    // });
+
+    //  console.log( "Zelito", this.signinformsExemplo.value)
+
     }
-    console.log('REGISTER', this.registerForm.value);
-  }
 
-  onForgotPassword(): void {
-    console.log('Forgot password');
-  }
-}
+/**Exemplos clicks */
+// exemploclick() {
+// console.log("clicou");
+// }
+
+// exemploMouseOver() {
+// console.log("passou o mouse sobre");
+// }
+
+
+

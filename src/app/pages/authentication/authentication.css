@@ -1,206 +1,243 @@
-:host {
-  display: block;
-  width: 100%;
-  font-family: var(--main-font-family, Roboto, "Helvetica Neue", sans-serif);
+/* =========================
+   Estilos gerais
+========================= */
+
+label {
+  font-weight: bold;
+  margin-bottom: -0.5rem;
+  color: var(--text-color);
 }
 
-.auth-page {
-  min-height: 100vh;
+input {
+  padding: 0.8rem;
+  border: 1px solid var(--placeholder);
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px var(--text-color-focus);
+}
+
+/* =========================
+   Cartão de Login
+========================= */
+
+.login-card {
+  width: 550px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: var(--background-color-sections);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  color: var(--text-color);
+}
+
+.login-card:hover {
+  box-shadow: var(--shadow-hover);
+}
+
+.login-card h2 {
+  margin-top: 0;
+  color: var(--text-color-h3);
+  font-size: var(--main-font-size2);
+  text-align: center;
+}
+
+.login-card p {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+}
+
+/* =========================
+   Formulário
+========================= */
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* =========================
+   Botões (geral)
+========================= */
+
+button {
+  padding: 0.8rem;
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: var(--transition);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1.5rem 1rem;
-  background-color: var(--background-color);
-}
-
-.auth-wrapper {
-  max-width: 1100px;
-  width: 100%;
-  display: grid;
-  grid-template-columns: minmax(0, 5fr) minmax(0, 5fr);
-  gap: 1.25rem;
-}
-
-/* Lado esquerdo (mais neutro) */
-.auth-side-content {
-  width: 100%;
-  border-radius: var(--border-radius);
-  padding: 1.5rem 1.6rem;
-  background-color: var(--background-color-sections);
-  box-shadow: var(--shadow);
-  border-left: 6px solid var(--primary-color);
-}
-
-.auth-title {
-  font-size: 1.6rem;
-  margin-bottom: 0.5rem;
-  color: var(--text-color);
-}
-
-.auth-subtitle {
-  font-size: 0.95rem;
-  line-height: var(--main-line-height);
-  margin-bottom: 0.9rem;
-  color: var(--text-color);
-}
-
-.auth-highlights {
-  list-style: disc;
-  padding-left: 1.1rem;
-  font-size: 0.92rem;
-  color: var(--text-color);
-}
-
-.auth-highlights li + li {
-  margin-top: 0.3rem;
-}
-
-/* Card formulário */
-.auth-card {
-  border-radius: var(--border-radius);
-  background-color: var(--background-color-sections);
-  box-shadow: var(--shadow);
-  padding: 1.4rem 1.5rem;
-  border: 1px solid rgba(0, 0, 0, 0.03);
-}
-
-/* Tabs */
-.auth-tabs {
-  display: flex;
   gap: 0.5rem;
-  margin-bottom: 1rem;
-  background-color: var(--background-color);
-  padding: 0.2rem;
-  border-radius: 999px;
 }
 
-.auth-tab {
+/* =========================
+   Grupo de Botões
+========================= */
+
+.button-group {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.button-group button {
   flex: 1;
-  border-radius: 999px;
-  border: none;
-  background-color: transparent;
-  padding: 0.45rem 0.75rem;
-  font-size: 0.9rem;
-  cursor: pointer;
-  color: var(--text-color);
-  transition: var(--transition);
 }
 
-.auth-tab-active {
-  background-color: var(--primary-color);
+/* =========================
+   Botão Limpar
+========================= */
+
+.clean-button {
+  background-color: var(--secondary-color);
   color: var(--text-color-light);
-  box-shadow: var(--shadow);
+  margin-bottom: 1rem;
 }
 
-/* Form */
-.auth-form {
-  display: flex;
-  flex-direction: column;
-  gap: 0.7rem;
+.clean-button:hover {
+  background-color: var(--third-color);
 }
 
-.auth-field {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
+/* =========================
+   Botão Sign In
+========================= */
 
-.auth-field label {
-  font-size: 0.85rem;
-  color: var(--text-color);
-}
-
-.auth-field input {
-  border-radius: var(--border-radius);
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  padding: 0.55rem 0.7rem;
-  font-size: 0.9rem;
-  outline: none;
-  background-color: #fff;
-}
-
-.auth-field input:focus {
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 1px var(--primary-color);
-}
-
-/* row */
-.auth-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 0.75rem;
-  margin-top: 0.25rem;
-}
-
-.auth-checkbox {
-  display: flex;
-  align-items: center;
-  gap: 0.35rem;
-  font-size: 0.85rem;
-  color: var(--text-color);
-}
-
-.auth-link {
-  border: none;
-  background: none;
-  padding: 0;
-  font-size: 0.85rem;
-  color: var(--text-hover);
-  cursor: pointer;
-  text-decoration: underline;
-}
-
-/* submit */
-.auth-submit {
-  margin-top: 0.4rem;
-  border-radius: var(--border-radius);
-  border: none;
-  padding: 0.6rem 1.1rem;
-  font-size: 0.95rem;
-  cursor: pointer;
-  background-color: var(--primary-color);
+.sign-in {
+  background-color: green;
   color: var(--text-color-light);
-  box-shadow: var(--shadow);
-  transition: var(--transition);
 }
 
-.auth-submit:hover:enabled {
-  box-shadow: var(--shadow-hover);
-  transform: translateY(-1px);
+.sign-in:hover {
+  background-color: var(--text-hover2);
 }
 
-.auth-submit:disabled {
-  opacity: 0.6;
+.sign-in:disabled {
+  background-color: var(--placeholder);
   cursor: not-allowed;
 }
 
-.auth-switch {
-  margin-top: 0.6rem;
-  font-size: 0.85rem;
+/* =========================
+   Botão Voltar
+========================= */
+
+.go-back {
+  background-color: var(--background-color-sections2);
   color: var(--text-color);
 }
 
-.auth-switch button {
-  border: none;
-  background: none;
-  color: var(--text-hover);
-  cursor: pointer;
-  padding: 0;
-  margin-left: 0.2rem;
-  text-decoration: underline;
+.go-back:hover {
+  background-color: var(--placeholder);
 }
 
-/* Responsivo */
-@media (max-width: 900px) {
-  .auth-wrapper {
-    grid-template-columns: 1fr;
+/* =========================
+   Botão Google
+========================= */
+
+.google-btn {
+  background-color: var(--text-color-light);
+  color: var(--background-color-code);
+  border: 1px solid var(--color-button-google);
+}
+
+.google-btn:hover {
+  background-color: var(--color-button-google-hover);
+}
+
+.google-btn img {
+  width: 20px;
+  height: 20px;
+}
+
+/* =========================
+   Gmail button display
+========================= */
+
+.gmail-button {
+  border-top: 1px solid var(--border-radius);
+}
+
+/* =========================
+   Mensagens de erro
+========================= */
+
+.error-message {
+  margin-top: -0.5rem;
+  width: 98%;
+  color: var(--secondary-color);
+  background-color: var(--background-color-error);
+  padding: 0.3rem;
+  border-radius: var(--border-radius);
+  font-size: 0.9rem;
+  border-left: 3px solid var(--secondary-color);
+}
+
+.error-message::before {
+  /* content: "⚠ "; */
+  color: var(--secondary-color);
+  font-weight: bold;
+}
+
+/* =========================
+   Warning
+========================= */
+
+.warning {
+  color: var(--text-color);
+  padding: 0.1%;
+  font-size: 10px;
+}
+
+/* =========================
+   Responsivo
+========================= */
+
+@media (max-width: 768px) {
+  .login-card {
+    width: 95%;
+    padding: 1.5rem;
   }
-}
 
-@media (max-width: 480px) {
-  .auth-row {
+  .button-group {
     flex-direction: column;
-    align-items: flex-start;
+  }
+
+  .clean-button,
+  .google-btn,
+  .sign-in,
+  .go-back {
+    width: 100%;
+  }
+
+  input {
+    font-size: 0.95rem;
+    padding: 0.6rem;
+  }
+
+  .login-card h2 {
+    font-size: 1.5rem;
+  }
+
+  .login-card p {
+    font-size: 0.95rem;
+  }
+
+  button {
+    font-size: 0.95rem;
+  }
+
+  .error-message {
+    font-size: 0.85rem;
   }
 }
+
