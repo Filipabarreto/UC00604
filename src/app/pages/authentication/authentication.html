@@ -12,10 +12,53 @@
     <!-- input do email -->
      <label for="email">E-Mail</label>
      <input type="email" id="email" name="email" placeholder="Digite seu email" formControlName="email">
+      <!-- {{this.signinforms.invalid && this.signinforms.get('email')?.touched }} -->
+     @if(this.signinforms.invalid && this.signinforms.get('email')?.touched) {
+
+      @if (this.signinforms.hasError('required',"email")) {
+         <div class="error-message">
+          <small>Campo Obrigatório</small>
+        </div>
+
+      }
+      @if (this.signinforms.getError("email","email")) {}
+      <div class="error-message">
+          <small>Erro no Padrão do Email</small>
+        </div>
+
+
+     }
 
     <!-- input do password -->
     <label for="password">Password</label>
      <input type="password" name="password" id="password" placeholder="Digite sua senha" formControlName="password">
+     @if (this.signinforms.valid && this.signinforms.get("password")?.touched) {
+
+        @if (this.signinforms.get("password")?.getError("required")) {
+          <div class="error-message">
+          <small>Campo Obrigatório</small>
+        </div>
+        }
+
+        <!-- Usando hasError -->
+          <!-- {{(this.signinforms.hasError("minlength", "password"))}}foi so para utilizar para bogar se era verdadeiro ou falso -->
+
+        @if (this.signinforms.hasError("minlength", "password")){
+          <div class="error-message">
+          <small>Campo tem que ter no minímo 3 caracteres</small>
+        </div>
+        }
+
+        <!-- Usando o getError -->
+        @if (this.signinforms.get("password")?.getError("maxlength")) {}
+          <div class="error-message">
+          <small>Campo tem que ter no máximo 10 caracteres</small>
+        </div>
+     }
+
+
+     <!-- Fim do Bloco -->
+
 
     <!-- botões -->
      <div class="button-group">

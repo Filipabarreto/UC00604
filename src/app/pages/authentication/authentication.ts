@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-authentication',
@@ -10,8 +10,6 @@ import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup } from '@angu
 })
 export class Authentication {
 
-
-
   protected signinforms!: UntypedFormGroup;
 
 
@@ -20,12 +18,18 @@ export class Authentication {
 
   constructor(private fb: UntypedFormBuilder) {
     this.signinforms = this.fb.nonNullable.group({
-      email: [''],
-      password: ['']
+      email: ['',[Validators.required, Validators.email] ], /**serve para validar o @ */
+      password: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(10)]]
     });
   }
 
     onsubmit() {
+      // this.signinforms.get('email')?.getError('required');
+
+
+      console.log("Controls", this.signinforms.controls['email'].value);
+
+
       console.log("Meu Forms", this.signinforms.value);
     }
 
@@ -39,6 +43,9 @@ export class Authentication {
     //  console.log( "Zelito", this.signinformsExemplo.value)
 
     }
+
+
+
 
 /**Exemplos clicks */
 // exemploclick() {

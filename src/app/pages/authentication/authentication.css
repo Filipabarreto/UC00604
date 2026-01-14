@@ -114,7 +114,7 @@ button {
 ========================= */
 
 .sign-in {
-  background-color: green;
+  background-color: var(--primary-color);
   color: var(--text-color-light);
 }
 
